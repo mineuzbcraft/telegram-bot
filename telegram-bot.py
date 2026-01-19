@@ -400,7 +400,7 @@ html_form = """
             <h3><i class="fas fa-info-circle"></i> MA'LUMOT</h3>
             <p>✅ 24/7 ishlaymiz</p>
             <p>✅ 5-15 daqiqada yetkazamiz</p>
-            <p>✅ Qo'llab-quvvatlash: @msrfteam</p>
+            <p>✅ Qo'llab-quvvatlash: @Caatit_bot</p>
         </div>
     </div>
 
@@ -558,7 +558,7 @@ def form(user_id):
             user_message += f"💰 UC miqdori: {uc_amount} UC\n"
             user_message += f"📧 Email: {email}\n"
             user_message += f"⏳ Yetkazish: 5-15 daqiqa\n\n"
-            user_message += f"📞 Support: @msrfteam"
+            user_message += f"📞 Support: @Caatit_bot"
             
             # Admin xabari
             admin_message = f"🛒 YANGI BUYURTMA!\n\n"
