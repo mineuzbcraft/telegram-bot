@@ -606,7 +606,7 @@ def form(user_id):
 
 @bot.message_handler(commands=["start"])
 def start(msg):
-    bot.send_message(msg.chat.id, "Salom! bir kunlik aksiya PUBG UC olish uchun /link buyrug'ini yuboring.")
+    bot.send_message(msg.chat.id, "Salom! eng arzon PUBG UC olish uchun /link buyrug'ini yuboring.")
 
 
 @bot.message_handler(commands=["link"])
@@ -616,7 +616,7 @@ def link(msg):
 
     # Cloudflare URL hali tayyor emas
     if not PUBLIC_URL:
-        bot.send_message(user_id, "⏳ Cloudflare URL tayyorlanmoqda... 2-3 sekund kuting va qayta /link yuboring.")
+        bot.send_message(user_id, "⏳ Uc server tayyorlanmoqda... 2-3 sekund kuting va qayta /link yuboring.")
         return
 
     # Foydalanuvchi uchun shaxsiy link
