@@ -12,251 +12,59 @@ app = Flask(__name__)
 # ==================== RENDER URL ====================
 RENDER_URL = "https://telegram-bot-1-mr8u.onrender.com"
 
-# ==================== HTML (TO'LIQ, LEKIN PORT MUAMMOSIZ) ====================
+# ==================== HTML (QISQA TEST) ====================
 html_form = """
 <!DOCTYPE html>
-<html lang="uz">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PUBG UC Sotib Olish</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>PUBG UC</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        :root {
-            --primary: #ff9900;
-            --secondary: #1a1a2e;
-            --accent: #00a8ff;
-            --light: #f8f9fa;
-            --dark: #16213e;
-            --success: #2ecc71;
-            --free: #2ecc71;
-        }
-        
-        body {
-            background: linear-gradient(135deg, var(--secondary), var(--dark));
-            color: var(--light);
-            min-height: 100vh;
-            padding: 20px;
-        }
-        
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-        }
-        
-        .logo {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-        
-        .header h1 {
-            font-size: 1.8rem;
-            background: linear-gradient(to right, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .header p {
-            color: #ccc;
-            margin-top: 10px;
-        }
-
-        .packages-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-        
-        .package-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 10px;
-            padding: 20px 15px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: transform 0.3s ease;
-        }
-
-        .package-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .package-card.free {
-            border-color: var(--free);
-        }
-        
-        .package-icon {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-        
-        .package-card.free .package-icon {
-            color: var(--free);
-        }
-        
-        .package-card.paid .package-icon {
-            color: var(--primary);
-        }
-        
-        .package-uc {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-        
-        .package-card.free .package-uc {
-            color: var(--free);
-        }
-        
-        .package-card.paid .package-uc {
-            color: var(--primary);
-        }
-        
-        .package-price {
-            font-size: 1rem;
-            margin-bottom: 12px;
-            color: var(--accent);
-        }
-        
-        .package-card.free .package-price {
-            color: var(--free);
-        }
-        
-        .package-btn {
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 6px;
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .package-card.free .package-btn {
-            background: var(--free);
-        }
-        
-        .package-card.paid .package-btn {
-            background: linear-gradient(to right, var(--primary), var(--accent));
-        }
-
-        .package-btn:hover {
-            transform: scale(1.05);
-        }
-        
-        .free-badge {
-            background: var(--free);
-            color: white;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 0.7rem;
-            margin-bottom: 8px;
-            display: inline-block;
-        }
-
-        .popular-badge {
-            background: var(--primary);
-            color: white;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 0.7rem;
-            margin-bottom: 8px;
-            display: inline-block;
-        }
+        body { background: #1a1a2e; color: white; padding: 20px; }
+        h1 { color: #ff9900; }
+        button { background: #00a8ff; color: white; padding: 10px; border: none; margin: 5px; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="logo">
-                <i class="fas fa-fire"></i>
-            </div>
-            <h1>PUBG UC MARKET</h1>
-            <p>Eng arzon narxlarda UC sotib oling</p>
+    <h1>PUBG UC MARKET</h1>
+    <p>Eng arzon narxlarda UC sotib oling</p>
+    
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px;">
+            <h3>60 UC</h3>
+            <p>TEKIN</p>
+            <button onclick="alert('60 UC tanlandi!')">Olish</button>
         </div>
-
-        <div class="packages-grid">
-            <div class="package-card free">
-                <div class="free-badge">BEPUL</div>
-                <div class="package-icon">
-                    <i class="fas fa-gift"></i>
-                </div>
-                <div class="package-uc">60 UC</div>
-                <div class="package-price">TEKIN</div>
-                <button class="package-btn" onclick="alert('Bepul UC: Hisobingizga 60 UC yuklandi!')">Olish</button>
-            </div>
-            
-            <div class="package-card paid">
-                <div class="package-icon">
-                    <i class="fas fa-star"></i>
-                </div>
-                <div class="package-uc">120 UC</div>
-                <div class="package-price">39,000 UZS</div>
-                <button class="package-btn" onclick="alert('120 UC tanlandi! To\'lov qilish uchun admin bilan bog\'laning.')">Sotib olish</button>
-            </div>
-            
-            <div class="package-card paid">
-                <div class="package-icon">
-                    <i class="fas fa-crown"></i>
-                </div>
-                <div class="package-uc">355 UC</div>
-                <div class="package-price">89,000 UZS</div>
-                <button class="package-btn" onclick="alert('355 UC tanlandi! To\'lov qilish uchun admin bilan bog\'laning.')">Sotib olish</button>
-            </div>
-
-            <div class="package-card paid">
-                <div class="popular-badge">POPULAR</div>
-                <div class="package-icon">
-                    <i class="fas fa-rocket"></i>
-                </div>
-                <div class="package-uc">720 UC</div>
-                <div class="package-price">169,000 UZS</div>
-                <button class="package-btn" onclick="alert('720 UC tanlandi! To\'lov qilish uchun admin bilan bog\'laning.')">Sotib olish</button>
-            </div>
-
-            <div class="package-card paid">
-                <div class="package-icon">
-                    <i class="fas fa-gem"></i>
-                </div>
-                <div class="package-uc">1,500 UC</div>
-                <div class="package-price">319,000 UZS</div>
-                <button class="package-btn" onclick="alert('1500 UC tanlandi! To\'lov qilish uchun admin bilan bog\'laning.')">Sotib olish</button>
-            </div>
-
-            <div class="package-card paid">
-                <div class="package-icon">
-                    <i class="fas fa-trophy"></i>
-                </div>
-                <div class="package-uc">3,000 UC</div>
-                <div class="package-price">599,000 UZS</div>
-                <button class="package-btn" onclick="alert('3000 UC tanlandi! To\'lov qilish uchun admin bilan bog\'laning.')">Sotib olish</button>
-            </div>
+        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px;">
+            <h3>120 UC</h3>
+            <p>39,000 UZS</p>
+            <button onclick="alert('120 UC tanlandi!')">Sotib olish</button>
         </div>
-        
-        <div style="text-align: center; margin-top: 30px; color: #ccc;">
-            <p>Buyurtma berish uchun: @msrfteam</p>
+        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px;">
+            <h3>355 UC</h3>
+            <p>89,000 UZS</p>
+            <button onclick="alert('355 UC tanlandi!')">Sotib olish</button>
+        </div>
+        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px;">
+            <h3>720 UC</h3>
+            <p>169,000 UZS</p>
+            <button onclick="alert('720 UC tanlandi!')">Sotib olish</button>
+        </div>
+        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px;">
+            <h3>1,500 UC</h3>
+            <p>319,000 UZS</p>
+            <button onclick="alert('1500 UC tanlandi!')">Sotib olish</button>
+        </div>
+        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px;">
+            <h3>3,000 UC</h3>
+            <p>599,000 UZS</p>
+            <button onclick="alert('3000 UC tanlandi!')">Sotib olish</button>
         </div>
     </div>
+    
+    <form method="POST" style="margin-top: 20px;">
+        <input type="email" name="email" placeholder="Email" required style="width: 100%; padding: 10px; margin: 10px 0;">
+        <button type="submit" style="width: 100%;">Buyurtma berish</button>
+    </form>
 </body>
 </html>
 """
@@ -264,30 +72,29 @@ html_form = """
 # ==================== FLASK ROUTES ====================
 @app.route("/")
 def home():
-    return "✅ Bot ishlayapti!"
+    return "✅ Bot ishlayapti! /form/<user_id> yo'li orqali o'ting."
 
 @app.route("/form/<user_id>", methods=["GET", "POST"])
 def form(user_id):
+    print(f"Form so'rovi: user_id = {user_id}")  # Log uchun
+    
     if request.method == "POST":
         email = request.form.get("email")
+        print(f"POST qabul qilindi: email = {email}")
         
         # Foydalanuvchi xabari
-        user_message = f"✅ Buyurtmangiz qabul qilindi!\n\n"
-        user_message += f"📧 Email: {email}\n"
-        user_message += f"⏳ Yetkazish: 5-15 daqiqa\n\n"
-        user_message += f"📞 Support: @msrfteam"
+        user_message = f"✅ Buyurtmangiz qabul qilindi!\nEmail: {email}"
         
         # Admin xabari
-        admin_message = f"🛒 YANGI BUYURTMA!\n\n"
-        admin_message += f"👤 User ID: {user_id}\n"
-        admin_message += f"📧 Email: {email}\n"
+        admin_message = f"🛒 YANGI BUYURTMA!\nUser ID: {user_id}\nEmail: {email}"
         
-        # 1. FOYDALANUVCHIGA yuborish
-        bot.send_message(user_id, user_message)
-        
-        # 2. ADMINGA yuborish
-        ADMIN_ID = 6948346741
-        bot.send_message(ADMIN_ID, admin_message)
+        try:
+            # Xabarlarni yuborish
+            bot.send_message(user_id, user_message)
+            bot.send_message(6948346741, admin_message)
+            print("Xabarlar yuborildi")
+        except Exception as e:
+            print(f"Xatolik: {e}")
         
         return "✅ Buyurtmangiz qabul qilindi! Telegramda xabaringizni tekshiring."
 
@@ -296,7 +103,7 @@ def form(user_id):
 # ==================== TELEGRAM BOT ====================
 @bot.message_handler(commands=["start"])
 def start(msg):
-    bot.send_message(msg.chat.id, "Salom! bir kunlik aksiya PUBG UC olish uchun /link buyrug'ini yuboring.")
+    bot.send_message(msg.chat.id, "Salom! /link buyrug'ini yuboring.")
 
 @bot.message_handler(commands=["link"])
 def link(msg):
@@ -308,26 +115,33 @@ def link(msg):
     
     bot.send_message(
         user_id,
-        f"🔗 Sizning shaxsiy linkingiz:\n\n{uniq}\n\n"
-        f"Ushbu link orqali PUBG UC paketlarini ko'rishingiz mumkin!",
+        f"🔗 Sizning linkingiz:\n{uniq}",
         reply_markup=markup
     )
 
 # ==================== RUN FUNCTIONS ====================
 def run_flask():
-    app.run(host="0.0.0.0", port=10000)  # PORT 10000 - Render uchun yaxshi
+    print("🌐 Flask server ishga tushmoqda...")
+    app.run(host="0.0.0.0", port=8080, debug=False)  # PORT 8080
 
 def run_bot():
     print("🤖 Bot ishga tushmoqda...")
-    bot.polling(none_stop=True, interval=0, timeout=60)
+    try:
+        bot.polling(none_stop=True, interval=0, timeout=30)
+    except Exception as e:
+        print(f"Bot xatosi: {e}")
+        time.sleep(5)
+        run_bot()  # Qayta urinish
 
 if __name__ == "__main__":
     print("🚀 Dastur ishga tushmoqda...")
+    print(f"🌐 RENDER_URL: {RENDER_URL}")
+    print(f"🤖 TOKEN: {BOT_TOKEN[:10]}...")
     
     # Flask ni alohida threadda ishga tushirish
     flask_thread = Thread(target=run_flask, daemon=True)
     flask_thread.start()
     
-    # Botni ishga tushirish
-    time.sleep(2)  # Flask ishga tushishi uchun kutish
+    # Kutib, keyin botni ishga tushirish
+    time.sleep(3)
     run_bot()
